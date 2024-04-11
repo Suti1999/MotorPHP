@@ -1,0 +1,123 @@
+/*Payment Card*/
+.card{
+    width: auto;
+    height: auto;
+    padding: auto;
+    margin: auto;
+    margin-top: 100px;
+    backdrop-filter: blur(5.5px);
+    -webkit-backdrop-filter: blur(5.5px);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.40);
+    color: #fff;
+}
+
+.input-group-text{
+    backdrop-filter: blur(5.5px);
+    -webkit-backdrop-filter: blur(5.5px);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.50);
+    border: 1px solid rgba(255, 255, 255, 0.40);
+}
+
+.btn{
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    padding: 8px;
+}
+
+.btn-primary:hover{
+    border: 1px solid rgba(255, 255, 255, 0.40);
+    transform: translateY(-8px);
+    transition: .2s;
+}
+
+.btn-primary:not(:hover){
+    transition: 0.2s;
+    transform: scale(1);
+}
+
+.FizetesiModSzoveg{
+    margin-bottom: 0px;
+}
+
+#PaymentMethodText{
+    color: red;
+    font-size: 20px;
+}
+
+#minden-mezo{
+    color: red; 
+    font-weight: bold;
+    font-size: 28px;
+}
+
+/*Selected Motor*/
+#kivalaszott_motor_cim {
+        font-family: 'Lilita One', sans-serif;
+        text-transform: uppercase;
+        font-style: italic;
+        font-weight: bold;
+        color: #fff;
+        text-align: center;
+        font-size: 60px;
+        margin-top: 50px;
+    }
+    
+    #jobb_oldali_motor_kep {
+    display: block;
+    margin: 0 auto;
+}
+
+.kozepre_igazitott_kep_tablazat {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#kivalaszott_motor_kep {
+    width: 420px;
+    height: 270px;
+    border: solid 1px #fff;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+td{
+    border-top: solid 1px #d6d6d6;
+    padding-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+table{
+    margin: 0 auto;
+    color: #fff;
+    width: 100%;
+}
+
+.tablazat_cimek{
+    padding: 0px 10px;
+}
+
+#vasarlas_div_ar {
+        margin-left: auto;
+        margin-right: auto;
+        font-family: 'Lilita One', sans-serif;
+        font-style: italic;
+        font-weight: bold;
+        color: #fff;
+        font-size: 60px;
+    }
+    
+.adat-parag{
+        display: inline;
+    }
