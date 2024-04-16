@@ -146,8 +146,10 @@ class Database {
     }
     
     public function felhasznaloTorles($email, $jelszo) {
-
+        //-- a felhasználót csak akkor törölhetem, ha nem szerepel a vásárlás táblában
+        //DELETE FROM `vasarlas` WHERE `userid` = {id};
         $sql = "DELETE FROM users WHERE `e-mail_cim` = ? AND `jelszo` = ?";
+        
         $stmt = $this->db->prepare($sql);
 
         if ($stmt) {
@@ -184,14 +186,14 @@ class Database {
         return password_hash($jelszo, PASSWORD_DEFAULT);
     }
 
-    // Jelszó ellenőrzése
+    
     public function verifyPassword($jelszo, $hashedPassword) {
         return password_verify($jelszo, $hashedPassword);
     }
 
-    public function vasarlasLeadasa($irszam, $varos, $unev_hszam, $emelet_ajto, $telefonszam){
-        $stmt = $this->db->prepare("INSERT INTO `vasarlas` (`irszam`, `varos`, `unev_hszam`, `emelet_ajto`, `telefonszam`, `userid`, `motorid`, `vasarlas_idopontja`) VALUES (?,?,?,?,?,1,1,CURRENT_TIMESTAMP)");
-        $stmt->bind_param("issss", $irszam, $varos, $unev_hszam, $emelet_ajto, $telefonszam);
+    public function vasarlasLeadasa($irszam, $varos, $unev_hszam, $emelet_ajto, $telefonszam, $userid, $motorid){
+        $stmt = $this->db->prepare("INSERT INTO `vasarlas` (`irszam`, `varos`, `unev_hszam`, `emelet_ajto`, `telefonszam`, `userid`, `motorid`) VALUES (?,?,?,?,?,?,?)");
+        $stmt->bind_param("issssii", $irszam, $varos, $unev_hszam, $emelet_ajto, $telefonszam, $userid, $motorid);
         try{
             if ($stmt->execute()){
                 echo '<p>Vásárlás sikeresen leadva!</p>';

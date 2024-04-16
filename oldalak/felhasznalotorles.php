@@ -1,17 +1,25 @@
 <link rel="stylesheet" href="./css_script/login.css"/>
 
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['TorlesEmail']) && isset($_POST['TorlesJelszo'])) {
-    
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['fiokTorles']) && isset($_POST['TorlesEmail']) && isset($_POST['TorlesJelszo'])) {
     $email = $_POST['TorlesEmail'];
     $jelszo = $_POST['TorlesJelszo'];
     $user = $db->getUserByEmail($email);
 
     if ($user && $db->verifyPassword($jelszo, $user['jelszo'])) {
-        $sql = "DELETE FROM users WHERE `e-mail_cim` = ?"; 
-        $stmt = $db->prepare($sql);
-        $stmt->bind_param("s", $email); 
-        if ($stmt->execute()) {
+        // Először töröljük a vásárlásokat
+        $sql_delete_vasarlas = "DELETE FROM vasarlas WHERE userid = ?";
+        $stmt_delete_vasarlas = $db->prepare($sql_delete_vasarlas);
+        $stmt_delete_vasarlas->bind_param("i", $user['userid']);
+        $stmt_delete_vasarlas->execute();
+        $stmt_delete_vasarlas->close();
+
+        // Majd töröljük a felhasználót
+        $sql_delete_user = "DELETE FROM users WHERE userid = ?";
+        $stmt_delete_user = $db->prepare($sql_delete_user);
+        $stmt_delete_user->bind_param("i", $user['userid']);
+
+        if ($stmt_delete_user->execute()) {
             session_unset();
             session_destroy();
             echo '<script>alert("Sikeres törlés és kijelentkezés!"); window.location.href = "index.php";</script>';

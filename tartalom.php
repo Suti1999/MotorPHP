@@ -42,7 +42,7 @@ switch ($menu) {
     
     case 'ElfelejtettJelszo':
         require_once './oldalak/elfelejtettjelszo.php';
-        break;
+        break;  
 
     case 'Vasarlas':
         require_once './oldalak/vasarlas.php';
